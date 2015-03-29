@@ -1,0 +1,5 @@
+*.swp
+*.pyc
+projects/node_modules/
+projects/public/build/
+projects/public/lib/
