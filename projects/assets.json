@@ -11,7 +11,11 @@
                 "public/lib/jquery/dist/jquery.js",
                 "public/lib/underscore/underscore.js",
                 "public/lib/bootstrap/dist/js/bootstrap.js",
-                "public/js/**/*.js"
+                "public/lib/backbone/backbone.js",
+                "public/lib/jade/runtime.js",
+                "public/build/templates/*.js",
+                "public/javascripts/views/*.js",
+                "public/javascripts/*.js"
             ]
         }
     }
