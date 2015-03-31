@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_environments import Environments
+from flask.ext.sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
@@ -27,3 +28,4 @@ if app.config['LOGGING'] == True:
     app.logger.setLevel(logging.DEBUG)
     app.logger.info('Application Process Started')
 
+db = SQLAlchemy(app)

@@ -1,5 +1,6 @@
 from pyprojects import app
 # Import controllers
+from pyprojects.models import *
 from pyprojects.controllers import *
 
 if __name__ == '__main__':
