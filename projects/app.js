@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var assetmanager = require('assetmanager');
 
 var routes = require('./routes/index');
+var apiRoutes = require('./routes/api');
 
 var app = express();
 
@@ -31,6 +32,7 @@ var assets = assetmanager.process({
 app.locals.assets = assets;
 
 app.use('/', routes);
+app.use('/api', apiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

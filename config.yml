@@ -1,0 +1,18 @@
+COMMON: &common
+  HOST: localhost
+  PORT: 3001
+  DEBUG: False
+  TESTING: False
+  LOGGING: True
+  LOG_FILE_PATH: 'logs'
+  LOG_FILE: 'projects.log'
+
+DEVELOPMENT: &development
+  <<: *common
+  DEBUG: True
+  SQLALCHEMY_DATABASE_URI: 'sqlite:////tmp/database.db'
+
+PRODUCTION: &production
+  <<: *common
+  DEBUG: False
+  SQLALCHEMY_DATABASE_URI: 'postgres://localhost/projects'
