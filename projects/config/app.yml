@@ -1,0 +1,18 @@
+default:
+    port: 3000
+    cache_assets: true
+    secret_key: 7EHDWHD9W9UW9FBFB949394BWYFG8WE78F
+
+development:
+    cache_assets: false
+
+test:
+    port: 3001
+
+production: &production
+    port: #{process.env.PORT}
+    secret_key: 3F8RRJR30UHERGUH8UERHGIUERHG3987GH8
+
+# aliases must be defined before you include!
+staging:
+    <<: *production

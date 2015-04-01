@@ -1,16 +1,61 @@
 var express = require('express');
 var unirest = require('unirest');
+var util = require('util');
 var router = express.Router();
 
-router.get('/project', function(req, res, next) {
-  console.log(req.query);
-  unirest.get('http://localhost:3001/api/project')
-    .headers({'Accept': 'application/json'})
-    .query(req.query)
-    .end(function(response) {
-      res.send(response.body);
-    });
-});
+module.exports = function(app) {
 
-module.exports = router;
+  router.get('/project', function(req, res, next) {
+    var url = util.format('http://%s:%s/api/project', config.proxy.pyprojects.host, config.proxy.pyprojects.port);
+    unirest.get(url)
+      .headers({'Accept': 'application/json'})
+      .encoding('utf-8')
+      .query(req.query)
+      .end(function(response) {
+        app.log.info("Received response");
+        if(response.error) {
+          app.log.error(response.error);
+          res.status(400).send(response.error);
+        }
+        res.send(response.body);
+      });
+  });
+
+  router.post('/project', function(req, res, next) {
+    var url = util.format('http://%s:%s/api/project', config.proxy.pyprojects.host, config.proxy.pyprojects.port);
+    unirest.post(url)
+      .headers({'Accept':'application/json',
+                'Content-Type':'application/json'})
+      .encoding('utf-8')
+      .send(req.body)
+      .end(function(response) {
+        app.log.info("Received response");
+        if(response.error) {
+          app.log.error(response.error);
+          res.status(400).send(response.error);
+        }
+        res.send(response.body);
+      });
+  });
+
+  router.get('/project/:id', function(req, res, next) {
+    var url = util.format('http://%s:%s/api/project/%s', config.proxy.pyprojects.host, config.proxy.pyprojects.port, req.params.id);
+    unirest.get(url)
+      .headers({'Accept':'application/json',
+                'Content-Type':'application/json'})
+      .encoding('utf-8')
+      .query(req.query)
+      .end(function(response) {
+        app.log.info("Received response");
+        if(response.error) {
+          app.log.error(response.error);
+          res.status(400).send(response.error);
+        }
+        res.send(response.body);
+      });
+  });
+  
+  return router;
+}
+
 

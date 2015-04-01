@@ -5,11 +5,31 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var assetmanager = require('assetmanager');
+var konfig = require('konfig');
+var bunyan = require('bunyan');
 
 var routes = require('./routes/index');
-var apiRoutes = require('./routes/api');
 
 var app = express();
+
+
+global.config = konfig();
+
+app.log = bunyan.createLogger({
+  name: 'projects',
+  streams: [
+    {
+      type: 'rotating-file',
+      path: 'logs/projects.log',
+      period: '1d',
+      count: 3
+    },
+    {
+      stream: process.stdout,
+      level: "info"
+    }
+  ]
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +52,8 @@ var assets = assetmanager.process({
 app.locals.assets = assets;
 
 app.use('/', routes);
+
+var apiRoutes = require('./routes/api')(app);
 app.use('/api', apiRoutes);
 
 // catch 404 and forward to error handler

@@ -3,4 +3,6 @@
 projects/node_modules/
 projects/public/build/
 projects/public/lib/
+projects/npm-debug.log
 logs/
+projects/logs/
