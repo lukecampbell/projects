@@ -1,7 +1,7 @@
 from pyprojects import db
 
 from collections import OrderedDict
-from datetime import datetime
+from datetime import datetime, date
 
 class DictSerializableMixin(object):
     def serialize(self):
@@ -16,10 +16,9 @@ class DictSerializableMixin(object):
     def _pytype(self, v):
         if isinstance(v, datetime):
             return v.isoformat()
+        if isinstance(v, date):
+            return v.isoformat()
         return v
 
 class Project(db.Model, DictSerializableMixin):
-    id = db.Column(db.String(10), primary_key=True)
-    name = db.Column(db.String(32))
-    description = db.Column(db.Text)
-
+    __tablename__ = 'projects'

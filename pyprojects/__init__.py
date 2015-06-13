@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_environments import Environments
 from flask.ext.sqlalchemy import SQLAlchemy
 import os
@@ -29,3 +29,4 @@ if app.config['LOGGING'] == True:
     app.logger.info('Application Process Started')
 
 db = SQLAlchemy(app)
+db.reflect()
