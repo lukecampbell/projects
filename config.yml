@@ -10,7 +10,7 @@ COMMON: &common
 DEVELOPMENT: &development
   <<: *common
   DEBUG: True
-  SQLALCHEMY_DATABASE_URI: 'sqlite:////tmp/database.db'
+  SQLALCHEMY_DATABASE_URI: 'postgres://localhost/projects'
 
 PRODUCTION: &production
   <<: *common
