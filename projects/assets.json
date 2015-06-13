@@ -45,14 +45,22 @@
         },
         "js": {
             "public/build/js/projects.min.js": [
-                "public/build/templates/Navbar.js",
+                "public/build/templates/projects.js",
+
+                "public/javascripts/models/ProjectModel.js",
+
                 "public/javascripts/views/NavbarView.js",
+                "public/javascripts/views/ProjectTableView.js",
+                "public/javascripts/views/ProjectTableItemView.js",
+
                 "public/javascripts/controllers/Projects.js"
             ]
         },
         "jade":{
-            "public/build/templates/Navbar.js": [
-                "public/javascripts/partials/Navbar.jade"
+            "public/build/templates/projects.js": [
+                "public/javascripts/partials/Navbar.jade",
+                "public/javascripts/partials/ProjectTable.jade",
+                "public/javascripts/partials/ProjectTableItem.jade"
             ]
         }
     }
