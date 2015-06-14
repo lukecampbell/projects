@@ -6,7 +6,8 @@
 _.extend(App.prototype, {
   models: {},
   views: {
-    navbarView: null
+    navbarView: null,
+    projectView: null
   },
   collections: {},
   initializeModels: function() {
@@ -14,6 +15,9 @@ _.extend(App.prototype, {
   initializeViews: function() {
     this.views.navbarView = new NavbarView({
       el: $('#navbar-view')
+    }).render();
+    this.views.projectView = new ProjectView({
+      el: $('#project-view')
     }).render();
   },
   initializeCollections: function() {
