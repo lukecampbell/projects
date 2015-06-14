@@ -8,7 +8,7 @@
             ]
         },
         "js": {
-            "public/build/js/main.min.js": [
+            "public/build/js/main.lib.min.js": [
                 "public/lib/jquery/dist/jquery.js",
                 "public/lib/underscore/underscore.js",
                 "public/lib/bootstrap/dist/js/bootstrap.js",
@@ -18,59 +18,95 @@
                 "public/javascripts/app.js"
             ]
         },
-        "jade":{
-          "public/build/templates/Example.js" : [
-            "public/javascripts/partials/Example.jade"
-          ]
+        "jade": {
+            "public/build/templates/Example.js": [
+                "public/javascripts/partials/Example.jade"
+            ]
         }
     },
     "index": {
         "css": {
-            "public/build/css/index.min.css": [
-            ]
+            "public/build/css/index.min.css": []
         },
         "js": {
-            "public/build/js/index.min.js": [
-                "public/build/templates/Example.js",
-
-                "public/javascripts/views/ExampleView.js",
-
+            "public/build/js/index.templates.min.js": [
+                "public/build/templates/Example.js"
+            ],
+            "public/build/js/index.views.min.js": [
+                "public/javascripts/views/ExampleView.js"
+            ],
+            "public/build/js/index.controllers.min.js": [
                 "public/javascripts/controllers/Example.js"
             ]
         },
-        "jade":{}
+        "jade": {}
     },
     "projects": {
         "css": {
             "public/build/css/projects.min.css": [
-              "public/stylesheets/projects.css",
-              "public/stylesheets/budget.css"
+                "public/stylesheets/projects.css",
+                "public/stylesheets/budget.css"
             ]
         },
         "js": {
-            "public/build/js/projects.min.js": [
-                "public/build/templates/projects.js",
-
+            "public/build/js/projects.templates.min.js": [
+                "public/build/templates/projects.js"
+            ],
+            "public/build/js/projects.models.min.js": [
                 "public/javascripts/models/ColorPaletteModel.js",
                 "public/javascripts/models/ProjectModel.js",
                 "public/javascripts/models/PieModel.js",
-                "public/javascripts/models/WindowModel.js",
-
+                "public/javascripts/models/WindowModel.js"
+            ],
+            "public/build/js/projects.views.min.js": [
                 "public/javascripts/views/BudgetView.js",
                 "public/javascripts/views/NavbarView.js",
                 "public/javascripts/views/ProjectTableView.js",
                 "public/javascripts/views/PieChartView.js",
-                "public/javascripts/views/ProjectTableItemView.js",
-
+                "public/javascripts/views/ProjectTableItemView.js"
+            ],
+            "public/build/js/projects.controllers.min.js": [
                 "public/javascripts/controllers/Projects.js"
             ]
         },
-        "jade":{
+        "jade": {
             "public/build/templates/projects.js": [
                 "public/javascripts/partials/Budget.jade",
                 "public/javascripts/partials/Navbar.jade",
                 "public/javascripts/partials/ProjectTable.jade",
                 "public/javascripts/partials/ProjectTableItem.jade"
+            ]
+        }
+    },
+    "project_page": {
+        "css": {
+            "public/build/css/project_page.min.css": [
+                "public/stylesheets/budget.css",
+                "public/stylesheets/project_page.css"
+            ]
+        },
+        "js": {
+            "public/build/js/project_page.templates.min.js": [
+                "public/build/templates/project_page.js"
+            ],
+            "public/build/js/projects.models.min.js": [
+                "public/javascripts/models/ColorPaletteModel.js",
+                "public/javascripts/models/ProjectModel.js",
+                "public/javascripts/models/PieModel.js",
+                "public/javascripts/models/WindowModel.js",
+                "public/javascripts/models/TestModel.js"
+            ],
+            "public/build/js/projects.views.min.js": [
+                "public/javascripts/views/NavbarView.js",
+                "public/javascripts/views/PieChartView.js"
+            ],
+            "public/build/js/projects.controllers.min.js": [
+                "public/javascripts/controllers/ProjectPage.js"
+            ]
+        },
+        "jade": {
+            "public/build/templates/project_page.js": [
+                "public/javascripts/partials/Navbar.jade"
             ]
         }
     }
