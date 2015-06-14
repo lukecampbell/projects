@@ -1,0 +1,13 @@
+// templates/project_page.jade
+extends layout
+block css
+  each css in assets.project_page.css
+    link(rel="stylesheet", href=css, type="text/css")
+
+block js
+  each js in assets.project_page.js
+    script(type="text/javascript", src=js)
+block body
+  #navbar-view
+  p content
+

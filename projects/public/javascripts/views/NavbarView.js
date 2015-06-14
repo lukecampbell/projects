@@ -10,8 +10,6 @@ var NavbarView = Backbone.View.extend({
   template: JST['Navbar.jade'],
   
   render: function() {
-    console.log("uke totte kudasai");
-    
     this.$el.html(this.template());
     this.$el.find('li#projects').toggleClass('active');
     

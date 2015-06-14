@@ -1,26 +1,26 @@
 "use strict"
 /*
- * <%= filepath %>
+ * public/javascripts/controllers/ProjectPage.js
  */
 
 _.extend(App.prototype, {
   models: {},
-  views: {},
+  views: {
+    navbarView: null
+  },
   collections: {},
   initializeModels: function() {
-    var self = this;
   },
   initializeViews: function() {
-    var self = this;
+    this.views.navbarView = new NavbarView({
+      el: $('#navbar-view')
+    }).render();
   },
   initializeCollections: function() {
-    var self = this;
   },
   initializeListeners: function() {
-    var self = this;
   },
   fetchCollections: function() {
-    var self = this;
   }
 });
 
