@@ -10,10 +10,8 @@ var ProjectView = Backbone.View.extend({
   template: JST['Project.jade'],
   
   render: function() {
-    
-    this.$el.html(this.template());
+    this.$el.html(this.template({model: this.model}));
     this.$el.ipsum();
-    
     return this;
   }
 });

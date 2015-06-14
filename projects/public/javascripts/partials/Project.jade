@@ -1,10 +1,10 @@
 .container-fluid
   .row
     .col-md-4.col-lg-offset-1.col-lg-5
-      h1 Projecct Name
+      h1= model.get('name')
       h3
-        i Project ID
-      span.lorem_p2
+        i= model.get('id')
+      p= model.get('description')
     .col-md-8.col-lg-5
       .pull-right.placeholder(style={'width':'350px', 'height':'350px'})
   .row
