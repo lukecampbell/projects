@@ -1,3 +1,30 @@
 body {
     padding-top: 70px;
 }
+
+#project-table-view th.sorted::after { 
+    position: relative;
+    left:5px;
+    content: "\f0d7";
+	font-family: FontAwesome;
+}
+
+#project-table-view th.sorted {
+    color: #671DD1;
+}
+
+#project-table-view th.reverse::after { 
+    position: relative;
+    left:5px;
+    content: "\f0d8";
+	font-family: FontAwesome;
+}
+
+#project-table-view th.reverse {
+    color: #671DD1;
+}
+
+#project-table-view th:hover {
+    cursor: pointer;
+    color: #777;
+}

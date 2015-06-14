@@ -4,7 +4,11 @@
  */
 
 var ProjectTableView = Backbone.View.extend({
+  events: {
+    'click th' : 'onSortBy'
+  },
   initialize: function(options) {
+    _.bindAll(this, "onSortBy");
   },
   subviews: {},
   template: JST['ProjectTable.jade'],
@@ -18,6 +22,26 @@ var ProjectTableView = Backbone.View.extend({
     this.listenTo(subview, "onClick", function(model) {
       self.trigger("onRowClick", model);
     });
+  },
+  onSortBy: function(e) {
+    e.stopPropagation();
+    if($(e.target).hasClass('sorted')) {
+      this.trigger('onReverseBy', $(e.target).data('id'));
+    } else {
+      this.trigger('onSortBy', $(e.target).data('id'));
+    }
+  },
+  sortColumn: function(column) {
+    this.clear();
+    this.$el.find('th[data-id="' + column + '"]').toggleClass("sorted");
+  },
+  reverseColumn: function(column) {
+    this.clear();
+    this.$el.find('th[data-id="' + column + '"]').toggleClass("reverse");
+  },
+  clear: function() {
+    this.$el.find('th').removeClass('sorted');
+    this.$el.find('th').removeClass('reverse');
   },
   render: function() {
     var self = this;
