@@ -12,7 +12,8 @@
                 "public/lib/underscore/underscore.js",
                 "public/lib/bootstrap/dist/js/bootstrap.js",
                 "public/lib/backbone/backbone.js",
-                "public/lib/jade/runtime.js"
+                "public/lib/jade/runtime.js",
+                "public/lib/d3/d3.min.js"
             ]
         },
         "jade":{
@@ -40,17 +41,22 @@
     "projects": {
         "css": {
             "public/build/css/projects.min.css": [
-              "public/stylesheets/projects.css"
+              "public/stylesheets/projects.css",
+              "public/stylesheets/budget.css"
             ]
         },
         "js": {
             "public/build/js/projects.min.js": [
                 "public/build/templates/projects.js",
 
+                "public/javascripts/models/ColorPaletteModel.js",
                 "public/javascripts/models/ProjectModel.js",
+                "public/javascripts/models/PieModel.js",
 
+                "public/javascripts/views/BudgetView.js",
                 "public/javascripts/views/NavbarView.js",
                 "public/javascripts/views/ProjectTableView.js",
+                "public/javascripts/views/PieChartView.js",
                 "public/javascripts/views/ProjectTableItemView.js",
 
                 "public/javascripts/controllers/Projects.js"
@@ -58,6 +64,7 @@
         },
         "jade":{
             "public/build/templates/projects.js": [
+                "public/javascripts/partials/Budget.jade",
                 "public/javascripts/partials/Navbar.jade",
                 "public/javascripts/partials/ProjectTable.jade",
                 "public/javascripts/partials/ProjectTableItem.jade"
