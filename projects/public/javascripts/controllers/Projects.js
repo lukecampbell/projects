@@ -11,6 +11,9 @@ _.extend(App.prototype, {
     projectTableView: null,
     budgetView: null,
   },
+  models: {
+    windowModel: new WindowModel()
+  },
   initializeModels: function() {
   },
   initializeViews: function() {
@@ -67,6 +70,11 @@ _.extend(App.prototype, {
       self.collections.projects.sort();
       self.views.projectTableView.render();
       self.views.projectTableView.reverseColumn(column);
+    });
+
+    this.listenTo(this.models.windowModel, 'resize', function(model) {
+      // Re-render the budget view
+      self.views.budgetView.render();
     });
   },
   fetchCollections: function() {

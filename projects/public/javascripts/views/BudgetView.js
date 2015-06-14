@@ -10,8 +10,7 @@ var BudgetView = Backbone.View.extend({
   subviews: [],
   addPieChart: function(model) {
     var el = this.$el.find('#pie-view');
-    var w = $(el).width();
-    console.log("Width", w);
+    var w = Math.min($(el).width(), 500);
     var subview = new PieChartView({
       el: el,
       model: model,
