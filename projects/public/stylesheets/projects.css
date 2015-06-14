@@ -32,3 +32,7 @@ body {
 #project-table-view tr:hover {
     cursor: pointer;
 }
+
+#project-table-view tr.new-project td {
+    color: #aaa;
+}

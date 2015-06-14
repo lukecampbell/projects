@@ -5,10 +5,11 @@
 
 var ProjectTableView = Backbone.View.extend({
   events: {
-    'click th' : 'onSortBy'
+    'click th' : 'onSortBy',
+    'click tr.new-project' : 'onNewProject'
   },
   initialize: function(options) {
-    _.bindAll(this, "onSortBy");
+    _.bindAll(this, "onSortBy", "onNewProject");
   },
   subviews: {},
   template: JST['ProjectTable.jade'],
@@ -30,6 +31,12 @@ var ProjectTableView = Backbone.View.extend({
     } else {
       this.trigger('onSortBy', $(e.target).data('id'));
     }
+  },
+  onNewProject: function(e) {
+    e.stopPropagation();
+    var subview = new NewProjectItemView();
+    subview.render();
+    subview.$el.insertAfter(this.$el.find('tr.new-project'));
   },
   sortColumn: function(column) {
     this.clear();

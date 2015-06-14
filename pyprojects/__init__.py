@@ -29,4 +29,3 @@ if app.config['LOGGING'] == True:
     app.logger.info('Application Process Started')
 
 db = SQLAlchemy(app)
-db.reflect()

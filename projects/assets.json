@@ -13,6 +13,7 @@
                 "public/lib/underscore/underscore.js",
                 "public/lib/bootstrap/dist/js/bootstrap.js",
                 "public/lib/backbone/backbone.js",
+                "public/lib/backbone.stickit/backbone.stickit.js",
                 "public/lib/jade/runtime.js",
                 "public/lib/d3/d3.min.js",
                 "public/lib/lorem/src/library/lorem.js",
@@ -64,7 +65,8 @@
                 "public/javascripts/views/NavbarView.js",
                 "public/javascripts/views/ProjectTableView.js",
                 "public/javascripts/views/PieChartView.js",
-                "public/javascripts/views/ProjectTableItemView.js"
+                "public/javascripts/views/ProjectTableItemView.js",
+                "public/javascripts/views/NewProjectItemView.js"
             ],
             "public/build/js/projects.controllers.min.js": [
                 "public/javascripts/controllers/Projects.js"
@@ -75,7 +77,8 @@
                 "public/javascripts/partials/Budget.jade",
                 "public/javascripts/partials/Navbar.jade",
                 "public/javascripts/partials/ProjectTable.jade",
-                "public/javascripts/partials/ProjectTableItem.jade"
+                "public/javascripts/partials/ProjectTableItem.jade",
+                "public/javascripts/partials/NewProjectItem.jade"
             ]
         }
     },
