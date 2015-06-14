@@ -36,19 +36,16 @@ var NewProjectItemView = Backbone.View.extend({
     setTimeout(function() {
       if(self.$el.find('input:focus').length == 0) {
         self.model.save(null, {success: function() {
-          console.log("SUCESS");
-          self.$el.html(self.template.rowItem({model: self.model}));
+          self.$el.html("");
+          app.trigger("app:newProject", self.model);
         }});
       }
     }, 500);
   },
-  template: {
-    newItem: JST['NewProjectItem.jade'],
-    rowItem: JST['ProjectTableItem.jade']
-  },
+  template: JST['NewProjectItem.jade'],
   render: function() {
     
-    this.$el.html(this.template.newItem());
+    this.$el.html(this.template());
     this.stickit();
     
     return this;

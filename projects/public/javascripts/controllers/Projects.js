@@ -39,11 +39,15 @@ _.extend(App.prototype, {
     var self = this;
     /* Listeners */
     this.listenTo(this.collections.projects, "add", function(model) {
-      console.log("Add");
-      this.views.projectTableView.add(model);
+      if(_.isUndefined(self.collections.comparator)) {
+        self.views.projectTableView.trigger("onSortBy", "id");
+      } else {
+        self.collections.projects.sort();
+        self.views.projectTableView.render();
+      }
     });
     this.listenTo(this.views.projectTableView, "onRowClick", function(model) {
-      console.log(model.attributes);
+      window.location.href = window.location.href + model.get('id');
     });
     this.listenTo(this.views.projectTableView, "onSortBy", function(column) {
       self.collections.projects.comparator = column;
@@ -75,6 +79,9 @@ _.extend(App.prototype, {
     this.listenTo(this.models.windowModel, 'resize', function(model) {
       // Re-render the budget view
       self.views.budgetView.render();
+    });
+    this.listenTo(this, "app:newProject", function(model) {
+      self.collections.projects.add(model);
     });
   },
   fetchCollections: function() {
