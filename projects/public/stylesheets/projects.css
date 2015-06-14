@@ -28,3 +28,7 @@ body {
     cursor: pointer;
     color: #777;
 }
+
+#project-table-view tr:hover {
+    cursor: pointer;
+}

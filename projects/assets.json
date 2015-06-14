@@ -54,6 +54,7 @@
                 "public/javascripts/models/ColorPaletteModel.js",
                 "public/javascripts/models/ProjectModel.js",
                 "public/javascripts/models/PieModel.js",
+                "public/javascripts/models/WindowModel.js",
 
                 "public/javascripts/views/BudgetView.js",
                 "public/javascripts/views/NavbarView.js",
