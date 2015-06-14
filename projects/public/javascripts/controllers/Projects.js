@@ -2,9 +2,7 @@
 /*
  * public/javascripts/index.js
  */
-var App = function() {
-};
-_.extend(App.prototype, Backbone.Events, {
+_.extend(App.prototype, {
   collections: {
     projects: new ProjectCollection()
   },
@@ -40,6 +38,10 @@ _.extend(App.prototype, Backbone.Events, {
       console.log("Add");
       this.views.projectTableView.add(model);
     });
+
+    this.listenTo(this.views.projectTableView, "onRowClick", function(model) {
+      console.log(model.attributes);
+    });
   },
   fetchCollections: function() {
     var self = this;
@@ -49,14 +51,6 @@ _.extend(App.prototype, Backbone.Events, {
         self.views.projectTableView.render();
       }
     });
-  },
-  start: function() {
-    var self = this;
-    this.initializeModels();
-    this.initializeCollections();
-    this.initializeViews();
-    this.initializeListeners();
-    this.fetchCollections();
   }
 });
 var app = new App();

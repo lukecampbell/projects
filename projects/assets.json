@@ -13,7 +13,8 @@
                 "public/lib/bootstrap/dist/js/bootstrap.js",
                 "public/lib/backbone/backbone.js",
                 "public/lib/jade/runtime.js",
-                "public/lib/d3/d3.min.js"
+                "public/lib/d3/d3.min.js",
+                "public/javascripts/app.js"
             ]
         },
         "jade":{
