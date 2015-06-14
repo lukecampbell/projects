@@ -3,6 +3,7 @@ from pyprojects.resource import Resource
 from flask import jsonify, request
 
 from collections import OrderedDict
+from decimal import Decimal
 from datetime import datetime, date
 
 class DictSerializableMixin(object):
@@ -20,10 +21,20 @@ class DictSerializableMixin(object):
             return v.isoformat()
         if isinstance(v, date):
             return v.isoformat()
+        if isinstance(v, Decimal):
+            return float(v)
         return v
 
 class Project(db.Model, DictSerializableMixin, Resource):
     __tablename__ = 'projects'
+    id = db.Column(db.Text, primary_key=True)
+    name = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    start_date = db.Column(db.DateTime(False), nullable=False, server_default=db.text("(now() at time zone 'UTC')"))
+    end_date = db.Column(db.DateTime(False))
+    manager = db.Column(db.Text, nullable=False)
+    budget = db.Column(db.Numeric, nullable=False)
+    
     required_fields = {
         'id' : str,
         'name' : unicode,
@@ -37,6 +48,7 @@ class Project(db.Model, DictSerializableMixin, Resource):
     }
     record_key = 'projects'
     path = '/api/project'
+
     
     @classmethod
     def index(cls):
@@ -51,6 +63,12 @@ class Project(db.Model, DictSerializableMixin, Resource):
 
 class Budget(db.Model, DictSerializableMixin, Resource):
     __tablename__ = 'budgets'
+    id = db.Column(db.Integer, db.Sequence('budgets_id_seq'), primary_key=True)
+    project_id = db.Column(db.ForeignKey('projects.id'), nullable=False)
+    total_budget = db.Column(db.Numeric, nullable=False)
+    spent_budget = db.Column(db.Numeric, nullable=False)
+    created_at = db.Column(db.DateTime(False), nullable=False, server_default=db.text("(now() at time zone 'UTC')"))
+
     required_fields = {
         'project_id' : str,
         'total_budget' : float,
