@@ -1,4 +1,9 @@
 /* public/stylesheets/project_page.css */
 body {
     padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.placeholder {
+    background: #F7EEE6;
 }

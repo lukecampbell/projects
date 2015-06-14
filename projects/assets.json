@@ -15,6 +15,7 @@
                 "public/lib/backbone/backbone.js",
                 "public/lib/jade/runtime.js",
                 "public/lib/d3/d3.min.js",
+                "public/lib/lorem/src/library/lorem.js",
                 "public/javascripts/app.js"
             ]
         },
@@ -98,7 +99,8 @@
             ],
             "public/build/js/projects.views.min.js": [
                 "public/javascripts/views/NavbarView.js",
-                "public/javascripts/views/PieChartView.js"
+                "public/javascripts/views/PieChartView.js",
+                "public/javascripts/views/ProjectView.js"
             ],
             "public/build/js/projects.controllers.min.js": [
                 "public/javascripts/controllers/ProjectPage.js"
@@ -106,7 +108,8 @@
         },
         "jade": {
             "public/build/templates/project_page.js": [
-                "public/javascripts/partials/Navbar.jade"
+                "public/javascripts/partials/Navbar.jade",
+                "public/javascripts/partials/Project.jade"
             ]
         }
     }
