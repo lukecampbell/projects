@@ -13,6 +13,7 @@ var NavbarView = Backbone.View.extend({
     console.log("uke totte kudasai");
     
     this.$el.html(this.template());
+    this.$el.find('li#projects').toggleClass('active');
     
     return this;
   }

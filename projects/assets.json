@@ -3,6 +3,7 @@
         "css": {
             "public/build/css/main.min.css": [
                 "public/lib/bootstrap/dist/css/bootstrap.css",
+                "public/lib/font-awesome/css/font-awesome.css",
                 "public/css/style.css"
             ]
         },
@@ -13,7 +14,8 @@
                 "public/lib/bootstrap/dist/js/bootstrap.js",
                 "public/lib/backbone/backbone.js",
                 "public/lib/jade/runtime.js",
-                "public/lib/d3/d3.min.js"
+                "public/lib/d3/d3.min.js",
+                "public/javascripts/app.js"
             ]
         },
         "jade":{
