@@ -8,4 +8,5 @@ var <%= modelName %> = Backbone.Model.extend({
 });
 
 var <%= collectionName %> = Backbone.Collection.extend({
+  model: <%= modelName %>
 });

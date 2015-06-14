@@ -1,0 +1,19 @@
+#pie-view {
+    width: 100%;
+}
+#pie-view path {  stroke: #fff; }
+#pie-view path:hover {  opacity:0.9; }
+#pie-view rect:hover {  fill:blue; }
+#pie-view .axis {  font: 10px sans-serif; }
+#pie-view .legend tr{    border-bottom:1px solid grey; }
+#pie-view .legend tr:first-child{    border-top:1px solid grey; }
+
+#pie-view .axis path,
+#pie-view .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#pie-view .x.axis path {  display: none; }
+#pie-view text { fill: #fff; }
