@@ -1,0 +1,11 @@
+#budget-edit-view .form-group {
+    border-bottom: 1px solid #ededed;
+}
+#budget-edit-view input {
+    border: none;
+    background: #fff;
+    display: block;
+}
+#budget-edit-view input:focus {
+    outline: none;
+}
