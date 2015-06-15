@@ -7,15 +7,23 @@
  */
 
 var PieChartView = Backbone.View.extend({
+  events: {
+    'click' : 'onClick'
+  },
+  onClick: function(e) {
+    this.trigger("onClick");
+  },
   initialize: function(options) {
     this.title = options && options.title || "Pie Chart";
+    this.subtitle = options && options.subtitle || "";
     this.colors = options && options.colors || new ColorPaletteModel();
     this.width = options && options.width || 500;
     this.height = options && options.height || 500;
-
+    _.bindAll(this, "onClick");
   },
   render: function() {
     var self = this;
+    this.$el.html("");
     this.pie = new d3pie(this.el, {
       "header": {
         "title": {
@@ -24,6 +32,7 @@ var PieChartView = Backbone.View.extend({
           "font": "open sans"
         },
         "subtitle": {
+          "text": this.subtitle,
           "color": "#999999",
           "fontSize": 12,
           "font": "open sans"
@@ -49,13 +58,14 @@ var PieChartView = Backbone.View.extend({
       },
       "labels": {
         "outer": {
-          "format": "label-value1",
-          "pieDistance": 16
+          "format": "none"
         },
         "inner": {
+          "format":"label-value2",
           "hideWhenLessThanPercentage": 3
         },
         "mainLabel": {
+          "color":"#efefef",
           "fontSize": 11
         },
         "percentage": {
@@ -81,5 +91,6 @@ var PieChartView = Backbone.View.extend({
         }
       }
     });
+    return this;
   }
 });

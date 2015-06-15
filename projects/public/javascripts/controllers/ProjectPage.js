@@ -31,6 +31,14 @@ _.extend(App.prototype, {
   initializeCollections: function() {
   },
   initializeListeners: function() {
+    var self = this;
+    this.listenTo(this.views.projectView, "chartClick", function() {
+      self.views.projectView.renderBudgetEdit();
+    });
+    this.listenTo(this.views.projectView, "newBudget", function(model) {
+      self.views.projectView.budgetModel = model;
+      self.views.projectView.renderPieChart();
+    });
   },
   fetchCollections: function() {
     var self = this;
