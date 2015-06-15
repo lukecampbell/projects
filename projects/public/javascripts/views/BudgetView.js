@@ -15,28 +15,27 @@ var BudgetView = Backbone.View.extend({
       el: el,
       model: model,
       width: w,
-      height: w
+      height: w,
+      title: this.model.get('project').name
     });
     this.subviews.push(subview);
     subview.render();
-    console.log("Pie Chart should be rendered");
   },
   render: function() {
     this.$el.html(this.template());
     var tempModel = new PieModel({
       records: [
         {
-          label: "spent",
-          value: 10000,
-          percent: 35
+          label: "Spent",
+          value: this.model.get('spent_budget')
         },
         {
-          label: "remaining",
-          value: 18571.42,
-          percent: 65
+          label: "Remaining",
+          value: this.model.get('project').budget - this.model.get('spent_budget')
         }
       ]
     });
+    console.log(tempModel.attributes);
     this.addPieChart(tempModel);
     return this;
   }

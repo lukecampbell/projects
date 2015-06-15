@@ -8,7 +8,6 @@ var PieModel = Backbone.Model.extend({
       {
         label: "zenbu",
         value: 0,
-        percent: 100
       }
     ] 
   }

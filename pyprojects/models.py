@@ -1,6 +1,7 @@
 from pyprojects import db
 from pyprojects.resource import Resource
 from flask import jsonify, request
+from sqlalchemy import desc
 
 from collections import OrderedDict
 from decimal import Decimal
@@ -65,13 +66,12 @@ class Budget(db.Model, DictSerializableMixin, Resource):
     __tablename__ = 'budgets'
     id = db.Column(db.Integer, db.Sequence('budgets_id_seq'), primary_key=True)
     project_id = db.Column(db.ForeignKey('projects.id'), nullable=False)
-    total_budget = db.Column(db.Numeric, nullable=False)
     spent_budget = db.Column(db.Numeric, nullable=False)
     created_at = db.Column(db.DateTime(False), nullable=False, server_default=db.text("(now() at time zone 'UTC')"))
+    project = db.relationship(u'Project')
 
     required_fields = {
         'project_id' : str,
-        'total_budget' : float,
         'spent_budget' : float
     }
     optional_fields = {
@@ -80,11 +80,17 @@ class Budget(db.Model, DictSerializableMixin, Resource):
     record_key = 'budgets'
     path = '/api/budget'
 
+    def serialize(self):
+        out = DictSerializableMixin.serialize(self)
+        out['project'] = self.project.serialize()
+        return out
+
     @classmethod
     def index(cls):
         q = cls.query
         if 'project_id' in request.args:
-            q.filter_by(project_id=request.args['project_id'])
+            q = q.filter_by(project_id=request.args['project_id'])
+        q = q.order_by('project_id', desc('created_at'))
         records = [r.serialize() for r in q.all()]
         return jsonify({cls.record_key: records, "length": len(records)})
 

@@ -7,3 +7,7 @@ body {
 .placeholder {
     background: #F7EEE6;
 }
+
+#pie-chart-view {
+    width: 100%;
+}

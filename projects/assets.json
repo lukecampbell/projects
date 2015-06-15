@@ -16,6 +16,7 @@
                 "public/lib/backbone.stickit/backbone.stickit.js",
                 "public/lib/jade/runtime.js",
                 "public/lib/d3/d3.min.js",
+                "public/lib/d3pie/d3pie/d3pie.js",
                 "public/lib/lorem/src/library/lorem.js",
                 "public/javascripts/app.js"
             ]
@@ -55,6 +56,7 @@
                 "public/build/templates/projects.js"
             ],
             "public/build/js/projects.models.min.js": [
+                "public/javascripts/models/BudgetModel.js",
                 "public/javascripts/models/ColorPaletteModel.js",
                 "public/javascripts/models/ProjectModel.js",
                 "public/javascripts/models/PieModel.js",
@@ -98,7 +100,8 @@
                 "public/javascripts/models/ProjectModel.js",
                 "public/javascripts/models/PieModel.js",
                 "public/javascripts/models/WindowModel.js",
-                "public/javascripts/models/TestModel.js"
+                "public/javascripts/models/TestModel.js",
+                "public/javascripts/models/BudgetModel.js"
             ],
             "public/build/js/projects.views.min.js": [
                 "public/javascripts/views/NavbarView.js",

@@ -23,7 +23,8 @@ var NewProjectItemView = Backbone.View.extend({
       name: "Name",
       manager: "Manager",
       description: "Description",
-      budget: "Budget"});
+      budget: "Budget"
+    });
   },
   onKeyUp: function(e) {
     console.log("oi");
@@ -35,20 +36,21 @@ var NewProjectItemView = Backbone.View.extend({
     var self = this;
     setTimeout(function() {
       if(self.$el.find('input:focus').length == 0) {
-        self.model.save(null, {success: function() {
-          console.log("SUCESS");
-          self.$el.html(self.template.rowItem({model: self.model}));
-        }});
+        self.model.save(null, {
+          success: function(model) {
+            self.$el.html("");
+            app.trigger("app:newProject", self.model);
+            var budgetModel = new BudgetModel({project_id: self.model.get('id'), spent_budget: 0});
+            budgetModel.save();
+          }
+        });
       }
     }, 500);
   },
-  template: {
-    newItem: JST['NewProjectItem.jade'],
-    rowItem: JST['ProjectTableItem.jade']
-  },
+  template: JST['NewProjectItem.jade'],
   render: function() {
     
-    this.$el.html(this.template.newItem());
+    this.$el.html(this.template());
     this.stickit();
     
     return this;
