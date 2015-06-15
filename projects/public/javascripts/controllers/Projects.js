@@ -4,7 +4,8 @@
  */
 _.extend(App.prototype, {
   collections: {
-    projects: new ProjectCollection()
+    projects: new ProjectCollection(),
+    budgets: new BudgetCollection()
   },
   views: {
     navbarView: null,
@@ -31,7 +32,6 @@ _.extend(App.prototype, {
     this.views.budgetView = new BudgetView({
       el: $('#budget-view')
     });
-    this.views.budgetView.render();
   },
   initializeCollections: function() {
   },
@@ -83,6 +83,23 @@ _.extend(App.prototype, {
     this.listenTo(this, "app:newProject", function(model) {
       self.collections.projects.add(model);
     });
+
+    this.listenTo(this, "app:showProject", _.debounce(function(model) {
+      self.loadBudget(model);
+    }, 500));
+  },
+  loadBudget: function(projectModel) {
+    var self = this;
+    console.log(projectModel.get('name'));
+    this.collections.budgets.fetch({
+      data: $.param({project_id: projectModel.get('id')}),
+      success: function(collection) {
+        if(collection.length > 0) {
+          self.views.budgetView.model = collection.at(0);
+          self.views.budgetView.render();
+        }
+      }
+    });
   },
   fetchCollections: function() {
     var self = this;
@@ -91,6 +108,9 @@ _.extend(App.prototype, {
       success: function(collection) {
         self.views.projectTableView.render();
         self.views.projectTableView.sortColumn('id');
+        if(collection.length>0) {
+          self.loadBudget(collection.at(0));
+        }
       }
     });
   }
