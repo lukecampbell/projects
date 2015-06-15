@@ -41,7 +41,10 @@ class Resource:
 
     @classmethod
     def parse_type(cls, field, value):
-        type_ = cls.required_fields[field]
+        if field in cls.required_fields:
+            type_ = cls.required_fields[field]
+        else:
+            type_ = cls.optional_fields[field]
         if type_ in (date, datetime):
             return dateparse(value)
         return type_(value)
