@@ -11,3 +11,22 @@ body {
 #pie-chart-view {
     width: 100%;
 }
+
+text {
+    font: 12px sans-serif;
+}
+svg {
+    display: block;
+}
+#burn-chart-view, svg {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+.dashed {
+    stroke-dasharray: 5,5;
+}
+#burn-chart-view {
+    height: 400px;
+}
