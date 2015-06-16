@@ -18,7 +18,7 @@ text {
 svg {
     display: block;
 }
-#burn-chart-view, svg {
+#burn-chart-view {
     margin: 0px;
     padding: 0px;
     height: 100%;
