@@ -94,3 +94,20 @@ class Budget(db.Model, DictSerializableMixin, Resource):
         records = [r.serialize() for r in q.all()]
         return jsonify({cls.record_key: records, "length": len(records)})
 
+class Employee(db.Model, DictSerializableMixin, Resource):
+    __tablename__ = 'employees'
+    id = db.Column(db.Integer, db.Sequence('employees_id_seq'), primary_key=True)
+    email = db.Column(db.Text, nullable=False)
+    name = db.Column(db.Text, nullable=False)
+    title = db.Column(db.Text)
+
+    required_fields = {
+        'name': unicode,
+        'email': unicode
+    }
+
+    optional_fields = {
+        'title' : unicode
+    }
+    record = 'employees'
+    path = '/api/employee'
