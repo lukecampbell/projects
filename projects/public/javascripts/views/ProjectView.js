@@ -6,7 +6,11 @@
 var ProjectView = Backbone.View.extend({
   initialize: function(options) {
   },
-  subviews: {},
+  subviews: {
+    pieChartView: null,
+    budgetEditView: null,
+    burnChartView: null
+  },
   template: JST['Project.jade'],
   renderPieChart: function() {
     var self = this;
@@ -49,12 +53,19 @@ var ProjectView = Backbone.View.extend({
       self.trigger('newBudget', model);
     });
   },
+  renderBurnChartView: function() {
+    var self = this;
+    this.subviews.burnChartView = new BurnChartView({
+      el: this.$el.find('#burn-chart-view')
+    }).render();
+  },
   render: function() {
     this.$el.html(this.template({model: this.model}));
     this.$el.ipsum();
     if(!_.isUndefined(this.budgetModel)) {
       this.renderPieChart();
     }
+    this.renderBurnChartView();
     return this;
   }
 });
