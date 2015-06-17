@@ -11,7 +11,7 @@
 
 '''
 from pyprojects import app, db
-from pyprojects.models import Project, Budget
+from pyprojects.models import Project, Budget, Employee
 from flask import jsonify, url_for, request
 from dateutil.parser import parse as dateparse
 import json
@@ -68,3 +68,4 @@ def site_map():
 
 Project.register()
 Budget.register()
+Employee.register()

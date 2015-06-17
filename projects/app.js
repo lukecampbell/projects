@@ -59,6 +59,9 @@ app.use('/api', apiRoutes);
 var projectsRoutes = require('./routes/projects')(app);
 app.use('/projects', projectsRoutes);
 
+var employeeRoutes = require('./routes/employees')(app);
+app.use('/employees', employeeRoutes);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
