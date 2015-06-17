@@ -98,7 +98,7 @@
             "public/build/js/project_page.templates.min.js": [
                 "public/build/templates/project_page.js"
             ],
-            "public/build/js/projects.models.min.js": [
+            "public/build/js/project_page.models.min.js": [
                 "public/javascripts/models/ColorPaletteModel.js",
                 "public/javascripts/models/ProjectModel.js",
                 "public/javascripts/models/PieModel.js",
@@ -106,7 +106,7 @@
                 "public/javascripts/models/TestModel.js",
                 "public/javascripts/models/BudgetModel.js"
             ],
-            "public/build/js/projects.views.min.js": [
+            "public/build/js/project_page.views.min.js": [
                 "public/javascripts/views/NavbarView.js",
                 "public/javascripts/views/PieChartView.js",
                 "public/javascripts/views/ProjectView.js",
@@ -122,6 +122,30 @@
                 "public/javascripts/partials/Navbar.jade",
                 "public/javascripts/partials/Project.jade",
                 "public/javascripts/partials/BudgetEdit.jade"
+            ]
+        }
+    },
+    "show_employee": {
+        "css": {
+            "public/build/css/show_employee.min.css": [
+                "public/stylesheets/show_employee.css"
+            ]
+        },
+        "js": {
+            "public/build/js/show_employee.templates.min.js": [
+                "public/build/templates/show_employee.js"
+            ],
+            "public/build/js/show_employee.models.min.js": [],
+            "public/build/js/show_employee.views.min.js": [
+                "public/javascripts/views/NavbarView.js"
+            ],
+            "public/build/js/show_employee.controllers.min.js": [
+                "public/javascripts/controllers/ShowEmployee.js"
+            ]
+        },
+        "jade": {
+            "public/build/templates/show_employee.js": [
+                "public/javascripts/partials/Navbar.jade"
             ]
         }
     }

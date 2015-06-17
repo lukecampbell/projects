@@ -1,0 +1,16 @@
+// show_employee.jade
+extends layout
+block css
+  each css in assets.show_employee.css
+    link(rel="stylesheet", href=css, type="text/css")
+
+block js
+  each js in assets.show_employee.js
+    script(type="text/javascript", src=js)
+block body
+  #navbar-view
+  .container-fluid
+    .row
+      .col-md-12
+        p Content will go here
+

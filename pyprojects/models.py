@@ -109,5 +109,5 @@ class Employee(db.Model, DictSerializableMixin, Resource):
     optional_fields = {
         'title' : unicode
     }
-    record = 'employees'
+    record_key = 'employees'
     path = '/api/employee'
